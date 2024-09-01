@@ -1,6 +1,8 @@
 # sevenTwo-back
 API dsenvolvida para projeto de pratica dentro da Focus Consultoria
 
+# https://seventwo-back.vercel.app/
+
 # Rotas
 ## /empresa
 - GET /empresa/:id retorna todos os campos do forms dessa empresa em JSON pelo id passado
