@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const empresaSchema = new Schema({
-    username: String,
-    password: String,
+    username: {type: String, required: true},
+    password: {type: String, required: true},
     camposForm: {
         type: Map,
-        of: String
+        of: String,
+        required: true
     }
 })
 
