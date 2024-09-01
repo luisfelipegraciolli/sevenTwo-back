@@ -15,6 +15,11 @@ const empresaSchema = new Schema({
         type: Map,
         of: String,
         required: true
+    },
+    typeOfCampo: {
+        type: Map,
+        of: String,
+        required: true
     }
 })
 
