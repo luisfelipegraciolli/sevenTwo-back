@@ -1,8 +1,6 @@
 {
     "version": 1,
     "rewrites": [
-      { "source": "/empresa/(.*)", "destination": "/empresa" },
-      { "source": "/auth/(.*)", "destination": "/auth" },
-      { "source": "/(.*)", "destination": "/" }
+      { "source": "/(.*)", "destination": "/api" }
     ]
   }
