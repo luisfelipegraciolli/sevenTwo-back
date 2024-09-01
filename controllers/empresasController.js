@@ -24,7 +24,7 @@ const readEmpresaCampos = async (req, res) => {
             return res.status(404).json({ message: 'Empresa não encontrada' });
         }
 
-        const {tituloForm, descriptionForm, placeholderCamposForm, camposForm, typeOfCampo} = empresa
+        const { tituloForm, descriptionForm, placeholderCamposForm, camposForm, typeOfCampo } = empresa;
 
         res.status(200).json({tituloForm, descriptionForm, placeholderCamposForm, camposForm, typeOfCampo});
     }
