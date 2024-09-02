@@ -8,7 +8,10 @@ const createEmpresa = async (req, res) => {
         await empresa.save();
         res.status(201).json({ message: "Empresa Criada com sucesso" });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({
+            message: "Erro ao criar empresa!",
+            erro: error.message,
+        });
     }
 };
 
@@ -36,8 +39,11 @@ const readEmpresaCampos = async (req, res) => {
             camposForm,
             typeOfCampo,
         });
-    } catch {
-        res.status(500).json({ error: error });
+    } catch (error) {
+        res.status(500).json({
+            message: "Erro ao ler a empresa!",
+            erro: error.message,
+        });
     }
 };
 
@@ -54,8 +60,11 @@ const updateEmpresa = async (req, res) => {
         Object.assign(empresa, req.body);
         await empresa.save();
         res.status(201).json({ message: "Empresa atualizada com sucesso" });
-    } catch {
-        res.status(500).json({ message: "Erro ao atualizar empresa" });
+    } catch (error) {
+        res.status(500).json({
+            message: "Erro ao atualizar empresa",
+            erro: error.message,
+        });
     }
 };
 
@@ -63,9 +72,12 @@ const deleteEmpresa = async (req, res) => {
     const id = req.params.id;
     try {
         await Empresa.deleteOne({ _id: id });
-        res.status(200).json({ messagem: "Empresa deletada com sucesso!" });
-    } catch {
-        res.status(500);
+        res.status(200).json({ message: "Empresa deletada com sucesso!" });
+    } catch (error) {
+        res.status(500).json({
+            message: "Erro ao deletar empresa",
+            erro: error.message,
+        });
     }
 };
 
@@ -89,7 +101,7 @@ const login = async (req, res) => {
     try {
         const token = jwt.sign({ empresaId: empresa._id }, process.env.JWT);
 
-        res.status(200).json({ msg: "autorizado", token });
+        res.status(200).json({ message: "autorizado", token });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
