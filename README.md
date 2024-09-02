@@ -4,7 +4,7 @@ API desenvolvida para projeto de pratica dentro da Focus Consultoria
 
 ## Overview
 
-Prove endpoints para manusear empresas e autenticação. Ela tem como objetivo a criação de formulários personalizados para cada empresa cadastrada. A Autenticação é feita por via de um JWT.A API todas operações CRUD
+Prove endpoints para manusear empresas e autenticação. Ela tem como objetivo a criação de formulários personalizados para cada empresa cadastrada. A Autenticação é feita por via de um JWT. A API todas operações CRUD
 
 ## URL
 
@@ -170,7 +170,7 @@ Deleta empresa com o ID do parâmetro
 
 ### auth
 
-#### GET /auth/login
+#### POST /auth/login
 
 Autoriza usuário a realizar as operações do CRUD usando JWT
 
@@ -184,7 +184,7 @@ Autoriza usuário a realizar as operações do CRUD usando JWT
 ```ts
 axios.get('https://api.example.com/protected-route', {
   headers: {
-    Authorization: Bearer ${token}, // Inclui o token no header Authorization
+    Authorization: `Bearer ${token}`
   },
 })
 ```
