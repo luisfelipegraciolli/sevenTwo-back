@@ -1,5 +1,5 @@
-var createError = require("http-errors");
 var express = require("express");
+var cors = require("cors");
 require("dotenv").config();
 
 const mongoose = require("mongoose");
@@ -9,6 +9,7 @@ var authRouter = require("./routes/auth");
 
 var app = express();
 
+app.use(cors);
 app.use(express.json());
 
 app.use("/empresa", empresaRouter);
