@@ -212,7 +212,7 @@ axios.get("https://seventwo-back/rota-protegida", {
     headers: {
         Authorization: `Bearer ${token}`,
     },
-});
+})
 ```
 
 ##### Resposta
