@@ -9,7 +9,7 @@ const authenticateToken = (req, res, next) => {
         jwt.verify(token, process.env.JWT)
         next()
     } catch (error) {
-        res.status(400).json({ error: "O token é invalido" })
+        res.status(401).json({ error: "O token é invalido" })
     }
 }
 module.exports = { authenticateToken }
