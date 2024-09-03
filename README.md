@@ -30,27 +30,47 @@ Busca por uma única empresa por seu ID
 
 ##### Resposta:
 
-Retorna um json contendo todos os campos necessários para o Formulário.Ex:
+Retorna um json contendo todos os campos necessários para o Formulário. Ex:
 
 ```json
 {
-    "tituloForm": "Reserva de Mesa",
-    "descriptionForm": "Reserve sua mesa para jantar conosco.",
-    "placeholderCamposForm": {
-        "nome": "Nome",
-        "dataReserva": "Data da reserva",
-        "horario": "Horário"
-    },
-    "camposForm": {
-        "nome": "name",
-        "dataReserva": "reservation_date",
-        "horario": "time"
-    },
-    "typeOfCampo": {
-        "nome": "text",
-        "dataReserva": "date",
-        "horario": "time"
-    }
+    "title": "Formulário de Contato",
+    "description": "Entre em contato conosco para qualquer dúvida ou sugestão.",
+    "fields": [
+        {
+            "name": "nome",
+            "label": "Nome",
+            "type": "text",
+            "placeholder": "Digite seu nome",
+            "required": true,
+            "_id": "66d66071e3ce58ddaa5adc8a"
+        },
+        {
+            "name": "email",
+            "label": "E-mail",
+            "type": "email",
+            "placeholder": "Digite seu e-mail",
+            "required": true,
+            "_id": "66d66071e3ce58ddaa5adc8a"
+        },
+        {
+            "name": "assunto",
+            "label": "Assunto",
+            "type": "text",
+            "placeholder": "Digite o assunto",
+            "required": true,
+            "_id": "66d66071e3ce58ddaa5adc8a"
+        },
+        {
+            "name": "mensagem",
+            "label": "Mensagem",
+            "type": "textarea",
+            "placeholder": "Digite sua mensagem",
+            "required": true,
+            "_id": "66d66071e3ce58ddaa5adc8a"
+        }
+    ],
+    "submitText": "Enviar"
 }
 ```
 
@@ -62,37 +82,50 @@ Cria empresa com campos passados por um Json
 
 ##### Parâmetros obrigatórios no Body:
 
-    -   username: String
-    -   password: String
-    -   tituloForm: String
-    -   descriptionForm: String
-    -   placeholderCamposForm: json
-    -   camposForm: json
-    -   typeOfCampo: json
+-   username: String
+-   password: String
+-   title: String
+-   fields: Array de Objects (Json) do tipo <code>{<br>name: String,<br>
+    label: String,<br>type: ['text', 'date', 'time', 'textarea'],<br> required: Boolean<br>
+    }</code>
 
 ##### Exemplo de Body para uma requisição
 
 ```json
 {
-    "username": "financial_consultant",
-    "password": "money_matters",
-    "tituloForm": "Solicitação de Consultoria",
-    "descriptionForm": "Preencha o formulário para agendar uma consulta.",
-    "placeholderCamposForm": {
-        "nome": "Nome completo",
-        "telefone": "Telefone",
-        "assunto": "Assunto da consulta"
-    },
-    "camposForm": {
-        "nome": "full_name",
-        "telefone": "phone",
-        "assunto": "subject"
-    },
-    "typeOfCampo": {
-        "nome": "text",
-        "telefone": "tel",
-        "assunto": "select"
-    }
+    "title": "Formulário de Cadastro",
+    "description": "Preencha os campos abaixo para se cadastrar.",
+    "fields": [
+        {
+            "name": "nome",
+            "label": "Nome",
+            "type": "text",
+            "placeholder": "Digite seu nome",
+            "required": true
+        },
+        {
+            "name": "email",
+            "label": "E-mail",
+            "type": "email",
+            "placeholder": "Digite seu e-mail",
+            "required": true
+        },
+        {
+            "name": "senha",
+            "label": "Senha",
+            "type": "password",
+            "placeholder": "Digite sua senha",
+            "required": true
+        },
+        {
+            "name": "confirmar_senha",
+            "label": "Confirmar Senha",
+            "type": "password",
+            "placeholder": "Confirme sua senha",
+            "required": true
+        }
+    ],
+    "submitText": "Cadastrar"
 }
 ```
 
@@ -100,7 +133,8 @@ Cria empresa com campos passados por um Json
 
 ```json
 {
-    "message": "Empresa Criada com sucesso"
+    "message": "Empresa Criada com sucesso",
+    "_id": "66d66071e3ce58ddaa5adc86323923cdd1"
 }
 ```
 
@@ -118,25 +152,17 @@ Busca por uma única empresa por seu ID e atualiza seu conteúdo
 
 ```json
 {
+    "username": "financial_consultant",
+    "password": "money_matters_2.127B",
+    "tituloForm": "Solicitação de Consultoria"
+}
+```
+
+```json
+{
     "username": "financial_consultant_AI",
     "password": "money_matters_2.127B",
-    "tituloForm": "Solicitação de Consultoria",
-    "descriptionForm": "Preencha o formulário para agendar uma consulta.",
-    "placeholderCamposForm": {
-        "nome": "Nome completo",
-        "telefone": "Telefone",
-        "assunto": "Assunto da consulta"
-    },
-    "camposForm": {
-        "nome": "full_name",
-        "telefone": "phone",
-        "assunto": "subject"
-    },
-    "typeOfCampo": {
-        "nome": "text",
-        "telefone": "tel",
-        "assunto": "select"
-    }
+    "tituloForm": "Solicitação de Consultoria"
 }
 ```
 
@@ -162,7 +188,7 @@ Deleta empresa com o ID do parâmetro
 
 ```json
 {
-    "messagem": "Empresa deletada com sucesso!"
+    "message": "Empresa deletada com sucesso!"
 }
 ```
 
@@ -179,22 +205,23 @@ Autoriza usuário a realizar as operações do CRUD usando JWT
     -   username: String
     -   password: String
 
-##### Exemplo de requisição
+##### Exemplo de requisição usando a biblioteca _axios_
 
-```ts
-axios.get('https://api.example.com/protected-route', {
-  headers: {
-    Authorization: `Bearer ${token}`
-  },
-})
+```js
+axios.get("https://seventwo-back/rota-protegida", {
+    headers: {
+        Authorization: `Bearer ${token}`,
+    },
+});
 ```
 
 ##### Resposta
 
 ```json
 {
-    "msg": "autorizado",
-    "token": "{token}"
+    "message": "autorizado",
+    "token": "{token}",
+    "_id": "66d656baa51be0a2ba08ac27"
 }
 ```
 
