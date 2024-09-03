@@ -86,14 +86,13 @@ Cria empresa com campos passados por um Json
 -   password: String
 -   title: String
 -   fields: Array de Objects (Json) do tipo <code>{<br>name: String,<br>
-label: String,<br>type: ['text', 'date', 'time', 'textarea'],<br> required: Boolean<br>
-}</code>
+    label: String,<br>type: ['text', 'date', 'time', 'textarea'],<br> required: Boolean<br>
+    }</code>
 
 ##### Exemplo de Body para uma requisição
 
 ```json
 {
-
     "title": "Formulário de Cadastro",
     "description": "Preencha os campos abaixo para se cadastrar.",
     "fields": [
@@ -155,7 +154,7 @@ Busca por uma única empresa por seu ID e atualiza seu conteúdo
 {
     "username": "financial_consultant",
     "password": "money_matters_2.127B",
-    "tituloForm": "Solicitação de Consultoria",
+    "tituloForm": "Solicitação de Consultoria"
 }
 ```
 
@@ -163,9 +162,10 @@ Busca por uma única empresa por seu ID e atualiza seu conteúdo
 {
     "username": "financial_consultant_AI",
     "password": "money_matters_2.127B",
-    "tituloForm": "Solicitação de Consultoria",
+    "tituloForm": "Solicitação de Consultoria"
 }
 ```
+
 ##### Resposta
 
 ```json
@@ -205,14 +205,14 @@ Autoriza usuário a realizar as operações do CRUD usando JWT
     -   username: String
     -   password: String
 
-##### Exemplo de requisição usando a biblioteca *axios*
+##### Exemplo de requisição usando a biblioteca _axios_
 
 ```js
-axios.get('https://seventwo-back/rota-protegida', {
-  headers: {
-    Authorization: `Bearer ${token}`
-  },
-})
+axios.get("https://seventwo-back/rota-protegida", {
+    headers: {
+        Authorization: `Bearer ${token}`,
+    },
+});
 ```
 
 ##### Resposta

@@ -6,7 +6,10 @@ const createEmpresa = async (req, res) => {
     try {
         const empresa = new Empresa(req.body);
         await empresa.save();
-        res.status(201).json({ message: "Empresa Criada com sucesso", _id: empresa.id });
+        res.status(201).json({
+            message: "Empresa Criada com sucesso",
+            _id: empresa.id,
+        });
     } catch (error) {
         res.status(500).json({
             message: "Erro ao criar empresa!",
@@ -24,18 +27,13 @@ const readEmpresaCampos = async (req, res) => {
             return res.status(404).json({ message: "Empresa não encontrada" });
         }
 
-        const {
-            title,
-            description,
-            fields,
-            submitText
-        } = empresa;
+        const { title, description, fields, submitText } = empresa;
 
         res.status(200).json({
             title: title,
             description: description,
             fields: fields,
-            submitText: submitText
+            submitText: submitText,
         });
     } catch (error) {
         res.status(500).json({
@@ -99,7 +97,11 @@ const login = async (req, res) => {
     try {
         const token = jwt.sign({ empresaId: empresa._id }, process.env.JWT);
 
-        res.status(200).json({ message: "Autorizado!", token, _id: empresa.id });
+        res.status(200).json({
+            message: "Autorizado!",
+            token,
+            _id: empresa.id,
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
