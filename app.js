@@ -25,7 +25,7 @@ app.use("/auth", authRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    next(createError(404)) // oq essa linha faz?
+    next(createError(404))
 })
 
 //Conecta ao mongoose e abre a porta

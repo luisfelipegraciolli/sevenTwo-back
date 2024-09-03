@@ -4,6 +4,9 @@ const authController = require("../controllers/empresasController")
 const authMiddleware = require("../middlewares/authMiddleware")
 
 router.post("/login", authController.login)
-router.post("/jwt", authMiddleware.authenticateToken)
+
+router.post("/jwt", authMiddleware.authenticateToken, (req, res) => {
+    res.send("Token Válido")
+})
 
 module.exports = router
