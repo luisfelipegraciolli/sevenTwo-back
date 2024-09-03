@@ -2,7 +2,8 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers["Authorization"];
+    // TODO descobrir se 'a' de authorization tem que ser maiusculo ou minusulo em prod
+    const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1];
     if (!token) return res.sendStatus(401);
     try {

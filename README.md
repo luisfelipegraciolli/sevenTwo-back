@@ -193,7 +193,7 @@ axios.get('https://api.example.com/protected-route', {
 
 ```json
 {
-    "msg": "autorizado",
+    "message": "autorizado",
     "token": "{token}"
 }
 ```
