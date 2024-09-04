@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
         "start": "nodemon ./app.js",
-        "vercel-build": "echo hello API"
+        "vercel-build": "echo hello API",
+        "format": "prettier . --write"
     },
     "dependencies": {
         "bcrypt": "^5.1.1",

@@ -1,7 +1,7 @@
-var express = require("express")
-var router = express.Router()
-var empresaController = require("../controllers/empresasController")
-const authMiddleware = require("../middlewares/authMiddleware")
+var express = require("express");
+var router = express.Router();
+var empresaController = require("../controllers/empresasController");
+const authMiddleware = require("../middlewares/authMiddleware");
 
 /* Create */
 router
@@ -26,6 +26,6 @@ router
         "/:id",
         authMiddleware.authenticateToken,
         empresaController.deleteEmpresa
-    )
+    );
 
-module.exports = router
+module.exports = router;
