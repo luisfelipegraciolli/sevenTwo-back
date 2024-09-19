@@ -21,7 +21,8 @@ router.post("/:id", async (req, res) => {
         res.status(200).json({ ...result });
     } catch (error) {
         res.status(500).json({
-            message: "Erro ao ler a empresa!",
+            message:
+                "Erro ao realizar os cálculos no servidor. Tente novamente.",
             erro: error.message,
         });
     }

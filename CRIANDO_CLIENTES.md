@@ -33,7 +33,7 @@ Copie esse UUID.
 // os nomes dos parametros devem ser os mesmos dos NAMES dos respectivos inputs no front
 function calculaMediaProvas({ p1, p2 }) {
     // passar em forma de objeto!!!!
-    return { media: (p1 + p2) / 2 };
+    return { media: (p1 + p2) / 2 }; // obs:  as chaves do objeto serao a mensagem exibida no front para o usuario, escolha com cuidado!
 }
 
 module.exports = calculaMediaProvas;
