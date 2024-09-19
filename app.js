@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 
 var empresaRouter = require("./routes/empresa");
 var authRouter = require("./routes/auth");
+var submitRouter = require("./routes/submit");
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(express.json());
 
 app.use("/empresa", empresaRouter);
 app.use("/auth", authRouter);
+app.use("/submit", submitRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

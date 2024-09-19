@@ -6,7 +6,6 @@ const fieldSchema = new Schema({
     label: { type: String, required: true },
     placeholder: { type: String, required: true },
     type: { type: String, required: true },
-
     required: {
         type: Boolean,
         enum: ["text", "date", "time", "textarea"],
@@ -19,7 +18,7 @@ const empresaSchema = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
     title: { type: String, required: true },
-    operation: { type: String, required: true },
+    path: { type: String, required: true },
     description: { type: String, required: true },
     fields: [fieldSchema],
     submitText: { type: String, required: true },

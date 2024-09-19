@@ -5,7 +5,8 @@
     "scripts": {
         "start": "nodemon ./app.js",
         "vercel-build": "echo hello API",
-        "format": "prettier . --write"
+        "format": "prettier . --write",
+        "new-client": "node clients/generate-client-file.js"
     },
     "dependencies": {
         "bcrypt": "^5.1.1",
@@ -22,6 +23,7 @@
         "nodemon": "^3.1.4"
     },
     "devDependencies": {
-        "prettier": "3.3.3"
+        "prettier": "3.3.3",
+        "uuid": "^10.0.0"
     }
 }
